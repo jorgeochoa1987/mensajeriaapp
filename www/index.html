@@ -1,0 +1,390 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<title>Mensajeria App</title>
+<link rel="stylesheet" type="text/css" href="styles/style.css">
+<link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+<link rel="stylesheet" type="text/css" href="styles/framework.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+<script>
+    function loadpage()
+    {
+        alert("hi_ jorge");
+    }
+  
+</script>
+
+</head>
+<div id="result"></div>
+
+
+<body >
+  
+<div id="preloader" class="preloader-light" >
+	<h1 class="center-text color-black ultrabold uppercase bottom-0 fa-2x">Mensajería app </h1>
+    <div id="preload-spinner"></div>
+    
+    <p>Cargando aplicación</p>
+    <img src="images/soluciones.png" style="
+    margin:auto;
+"/>
+</div>
+
+
+<div id="page-transitions" class="page-build">
+    <div class="page-bg gradient-body-1"></div>
+
+	<div class="header shadow-large header-light header-logo-app">
+		<a  class="header-logo"></a>
+		<a data-menu="menu-1" data-menu-type="menu-sidebar-left-push" href="#" class="header-icon header-icon-1"><i class="fas fa-bars"></i></a>
+		<a data-menu="menu-bell" data-menu-type="menu-box-top" href="#" onclick="notificacionesdom()" class="header-icon header-icon-3"><i class="fas fa-bell" id="not" style=" color: red;"></i>  </a>
+    </div> 
+
+	<div id="menu-1" class="menu menu-sidebar-left menu-settings">
+        <div class="menu-bg gradient-body-1"></div>
+        <div class="menu-scroll">
+            <div class="menu-header">
+                <a class="menu-logo" href="index.html"></a>
+                <h1>Bienvenido</h1>
+                <p id ="user">Usuario, </p>
+            </div>
+            <div class="menu-list icon-background-active">
+                <em class="menu-divider top-10">Opciones</em> 
+                <a class="menu-item active-menu" onClick="home()" ><i class="fa gradient-green-light fa-star"></i>Inicio</a>
+                <a class="menu-item"  onclick="historial()"><i class="fa gradient-magenta-light fa-home"></i>Historial</a>
+                <a class="menu-item"  onclick="historial()"><i class="fa gradient-sky-light fa-cog"></i>Emergencia<span></span></a>
+                <a class="menu-item"  onclick="historial()"><i class="fa gradient-mint-dark fa-hand-point-right"></i>Kilometraje<span></span></a>
+                <a data-submenu="submenu-1" class="menu-item" onclick="historial()"><i class="fa gradient-magenta-light fa-image"></i>Recarga<span></span></a>
+                
+                <a class="menu-item"  onclick="historial()"><i class="fa gradient-brown-light fa-file"></i>Perfil</a>
+                <a class="menu-item" href="" onclick="destroys()"><i class="fa gradient-red-light fa-window-close"></i>Cerrar Sesión</a>
+
+            </div>
+            <em class="menu-copyright">Derechos reservados <span class="copyright-year"></span></em>
+        </div>
+	</div>
+
+	<div class="page-content header-clear-larger">
+        <style type="text/css">
+          
+            #map{
+                width:100%;
+                height:100%;
+            }
+            #todo{
+                display: block;
+    overflow: hidden;
+    box-sizing: border-box;
+    height: 229px;
+
+            }
+        </style>
+        
+        <div class="content-box shadow-large bg-white">
+            <div class="top-25 bottom-15">
+                <h3 class="bottom-10">Ubicación actual de usuario 				
+
+                    <i class="fa fa-star float-right top-0 color-yellow-light"></i></h3>
+                    <div id="accelerometer">Cargando Ubicación...</div>
+                <section id="todo">
+                    <div id="map"></div>
+                </section>   
+            </div>
+        </div>
+        <h3 class="bottom-10" style="text-align-last: center;color: white;padding-top: 10px;">Eventos del día </h3>
+            <div class="single-slider owl-carousel owl-no-dots bottom-50 owl-loaded owl-drag" id="eventos"></div>
+            <div class="content-box shadow-large bg-white">
+            <div class="top-25 bottom-15">
+                <h3 class="bottom-10">Pico y placa <i class="fa fa-star float-right top-0 color-yellow-light"></i></h3>
+                <div id="picoyplaca"></div>
+                <div class="decoration opacity-50 bottom-10"></div>
+            </div>
+        </div>
+		<div class="content-box shadow-large bg-white">
+            <div class="top-25 bottom-35">
+                <h3 class="bottom-10">Información del usuario<i class="fa fa-heart float-right top-0 color-red-light"></i></h3>
+              
+
+                <div class="decoration opacity-50"></div>
+
+                <div class="icon-column">
+                    <h1 class="font-17 bottom-0 regularbold" >Estado del domiciliario</h1>
+                    <i class="fa fa-cog gradient-sky-light color-white shadow-icon-large"></i>
+                    <p id="estadoUsu"></p>
+                </div>
+
+                <div class="icon-column">
+                    <h1 class="font-17 bottom-0 regularbold" >Ultima recarga</h1>
+                    <i class="fa fa-user gradient-red-light color-white shadow-icon-large"></i>
+                    <p id="estadoRec"></p>
+                </div>
+
+                <div class="icon-column">
+                    <h1 class="font-17 bottom-0 regularbold">Mi Vehículo</h1>
+                    <i class="fa fa-file gradient-green-dark color-white shadow-icon-large" ></i>
+                  <p id="moto"></p>
+                </div>
+            </div>
+		</div>
+
+
+
+	</div>
+
+    <div id="menu-contact" data-menu-height="460" class="menu menu-box-modal bg-white shadow-large">
+        <div class="menu-scroll">
+            <h3 class="uppercase ultrabold center-text top-0 color-black font-27">Get in Touch</h3>
+            <p class="center-text left-30 right-30 bottom-20 color-black top-10 opacity-70">
+                Send us a message and we'll get back to you in the shortest possible time.
+            </p>
+            <div class="deco-thin deco-2 bottom-20"></div>
+			<div class="contact-form">
+				<div class="formSuccessMessageWrap" id="formSuccessMessageWrap">
+					<p class="center-text"><i class="fa fa-2x fa-paper-plane-o"></i></p>
+					<h4 class="uppercase ultrabold center-text">Message Sent</h4>
+					<p class="center-text boxed-text">
+						We usually reply in less than 24 hours. <br/> Thank you for getting in touch with us!
+					</p>
+					<a href="#" class="button button-round color-white button-blue button-xs button-center close-menu uppercase bold top-30">Return to Site</a>
+				</div>
+				<form action="php/contact.php" method="post" class="contactForm" id="contactForm">
+					<fieldset>
+						<div class="formValidationError" id="contactNameFieldError">Name is required!</div>
+						<div class="formValidationError" id="contactEmailFieldError">Mail address required!</div>
+						<div class="formValidationError" id="contactEmailFieldError2">Mail address must be valid!</div>
+						<div class="formValidationError" id="contactMessageTextareaError"></div>
+						<div class="formFieldWrap">
+							<label class="field-title contactNameField" for="contactNameField"></label>
+							<input type="text" name="contactNameField" placeholder="John Doe" value="" class="contactField requiredField" id="contactNameField" />
+						</div>
+						<div class="formFieldWrap">
+							<label class="field-title contactEmailField" for="contactEmailField"></label>
+							<input type="text" name="contactEmailField" placeholder="Email Address" value="" class="contactField requiredField requiredEmailField" id="contactEmailField" />
+						</div>
+						<div class="clear"></div>
+						<div class="formTextareaWrap half-bottom">
+							<label class="field-title contactMessageTextarea" for="contactMessageTextarea"></label>
+							<textarea name="contactMessageTextarea" placeholder="Enter your message here." class="contactTextarea requiredField" id="contactMessageTextarea"></textarea>
+						</div>
+						<div class="contactFormButton">
+							<input type="submit" class="buttonWrap button-blue color-white button-sm uppercase ultrabold shadow-icon-large button-rounded contactSubmitButton" id="contactSubmitButton" value="Send Message" data-formId="contactForm" />
+						</div>
+					</fieldset>
+				</form>
+			</div>
+        </div>
+    </div>
+
+    <div class="menu menu-box-full shadow-large" id="menu-settings">
+        <div class="page-bg gradient-body-1">
+            <div class="cover-content-center">
+                <div class="content">
+                    <h1 class="uppercase ultrabold center-text fa-4x bottom-25 color-white text-shadow-large">KOLOR</h1>
+                    <p class="center-text bottom-50 opacity-50 font-14 color-white text-shadow-large">
+                        Kolor includes 9  Gradients for you to enjoy.<br>It's easy to edit or create more.
+                    </p>
+                    <ul class="demo-colors">
+                        <li><a href="#" class="democ-1 color-white bottom-10 no-border"><i class="shadow-icon-large gradient-body-1"></i>Default</a></li>
+                        <li><a href="#" class="democ-5 color-white bottom-10 no-border"><i class="shadow-icon-large gradient-body-5"></i>Violet</a></li>
+                        <li><a href="#" class="democ-7 color-white bottom-10 no-border"><i class="shadow-icon-large gradient-body-7"></i>Magenta</a></li>
+                        <li><a href="#" class="democ-6 color-white bottom-10 no-border"><i class="shadow-icon-large gradient-body-6"></i>Red</a></li>
+                        <li><a href="#" class="democ-3 color-white bottom-10 no-border"><i class="shadow-icon-large gradient-body-3"></i>Green</a></li>
+                        <li><a href="#" class="democ-4 color-white bottom-10 no-border"><i class="shadow-icon-large gradient-body-4"></i>Blue</a></li>
+                        <li><a href="#" class="democ-2 color-white bottom-10 no-border"><i class="shadow-icon-large gradient-body-2"></i>Orange</a></li>
+                        <li><a href="#" class="democ-8 color-white bottom-10 no-border"><i class="shadow-icon-large gradient-body-8"></i>Dark</a></li>
+                        <li><a href="#" class="democ-9 color-white bottom-10 no-border"><i class="shadow-icon-large gradient-body-9"></i>Yellow</a></li>
+                    </ul>
+                    <div class="clear"></div>
+                    <a href="#" class="close-menu top-40 button button-round button-s button-white uppercase ultrabold button-center shadow-icon-small">AWESOME</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="menu-bell" data-menu-height="425" class="menu menu-box-top bg-white">
+        
+     
+      
+        <div class="menu-bar"><div></div></div>
+    </div>
+
+    <div id="menu-phone" data-menu-height="285" class="menu menu-box-bottom bg-white">
+        <h1 class="center-text top-20 bottom-0 uppercase ultrabold">GIVE US A CALL</h1>
+        <p class="color-black center-text font-12 opacity-50 top-0">Tap the number you want to call, we'll connect you.</p>
+        <div class="phone-boxes top-20">
+            <a href="tel:(234) 567 890" class="phone-box">
+                <i class="shadow-icon-large fa fa-user bg-blue-dark"></i>
+                <em>John Doe</em>
+                <strong>(234) 567 890</strong>
+            </a>
+            <a href="tel:(234) 567 890" class="phone-box">
+                <i class="shadow-icon-large fa fa-briefcase bg-green-dark"></i>
+                <em>Office</em>
+                <strong>(234) 567 890</strong>
+            </a>
+            <a href="tel:(234) 567 890" class="phone-box">
+                <i class="shadow-icon-large fa fa-life-ring font-24 bg-orange-dark"></i>
+                <em>Support</em>
+                <strong>(234) 567 890</strong>
+            </a>
+            <div class="clear"></div>
+        </div>
+        <div class="decoration opacity-50 bottom-10"></div>
+        <p class="center-text font-10 small-line-height top-10">Monday - Friday | 09:00 AM to 10:00 PM</p>
+    </div>
+
+
+    <div id="menu-share" data-menu-height="375" class="menu menu-box-bottom bg-white">
+        <h1 class="center-text top-20 bottom-0 uppercase ultrabold">Sharing the Love</h1>
+        <p class="color-black center-text font-12 opacity-50 top-0">Share your page with the world, just tap an icon.</p>
+        <div class="share-icons">
+            <a href="#" class="shareToFacebook"><i class="fab fa-facebook-f shadow-icon-large facebook-bg"></i><em>Facebook</em></a>
+            <a href="#" class="shareToGooglePlus"><i class="fab fa-google-plus-g shadow-icon-large google-bg"></i><em>Google +</em></a>
+            <a href="#" class="shareToTwitter"><i class="fab fa-twitter shadow-icon-large twitter-bg"></i><em>Twitter</em></a>
+            <a href="#" class="shareToPinterest"><i class="fab fa-pinterest-p shadow-icon-large pinterest-bg"></i><em>Pinterest</em></a>
+            <a href="#" class="shareToWhatsApp"><i class="fab fa-whatsapp shadow-icon-large whatsapp-bg"></i><em>WhatsApp</em></a>
+            <a href="#" class="shareToMail"><i class="far fa-envelope shadow-icon-large mail-bg"></i><em>Email</em></a>
+        </div>
+        <p class="center-text font-10 small-line-height top-10">Copyright <span class="copyright-year"></span> Enabled. All Rights Reserved.</p>
+    </div>
+	<a href="#" class="back-to-top-badge back-to-top-small shadow-large bg-blue-dark"><i class="fa fa-angle-up"></i>Back to Top</a>
+</div>
+
+
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/plugins.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
+
+<script src="cordova.js"></script>
+<script src="js/index.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwkdh59H57kWpJDN6XmLZJYs0zjIAuQX4&callback=initMap" async defer></script>
+<script type="text/javascript">
+    var deviceReady = function(){
+        if(window.MobileAccessibility){
+            window.MobileAccessibility.usePreferredTextZoom(false);
+        }
+    }
+    document.addEventListener('deviceready', deviceReady, false);
+    usuarioActivo();
+</script> 
+
+<script>
+
+ 
+$.get("http://spmensajeria.com/admin/consumo.php?opcion=3", function( data ) {
+     console.log( 'pico'+ data ); 
+     var i;
+     for (i = 0; i < 1; i++) {
+        
+       $('#picoyplaca').append( '<table><tr><th>Lunes</th><th>Martes</th><th>Miercoles</th><th>Jueves</th><th>Viernes</th><th>Sabado</th></tr>'+
+                                '<tr><td>'+data.consumo[i].l1+'</td><td>'+data.consumo[i].m1+'</td><td>'+data.consumo[i].mi1+'</td><td>'+data.consumo[i].j1+'</td><td>'+data.consumo[i].v1+'</td><td>'+data.consumo[i].s1+'</td></tr>'+
+                                '<tr><td>'+data.consumo[i].l2+'</td><td>'+data.consumo[i].m2+'</td><td>'+data.consumo[i].mi2+'</td><td>'+data.consumo[i].j2+'</td><td>'+data.consumo[i].v2+'</td><td>'+data.consumo[i].s2+'</td></tr>');
+   
+     } 
+   }) 
+
+</script>
+
+
+<script>
+    $.get("http://spmensajeria.com/admin/consumo.php?opcion=12", function( data ) {
+		console.log( data ); 
+		$('#not').html('<a>');
+		var i;
+		for (i = 0; i < 3; i++) {
+		{
+			$('#not').html(i);
+		}			
+	  
+		} 
+	  }) 
+</script>
+<script>
+
+ 
+    $.get("http://spmensajeria.com/admin/consumo.php?opcion=12", function( data ) {
+         console.log( data ); 
+         var i;
+         for (i = 0; i < 3; i++) {
+             var image ="http://spmensajeria.com/admin/aplication/modules/uploads/"+data.consumo[i].imagen;
+             if(data.consumo[i].imagen=== "")
+             { 
+                 image ="http://spmensajeria.com/admin/aplication/modules/uploads/default.png";
+             }
+             console.log(image);
+           $('#menu-bell').append( '<a  onclick="solicitar('+data.consumo[i].id+')"href="#" class="bell-item" style="background: #ededed;padding: 20px;">'+
+                                    '<img class="preload-image shadow-icon-large" src="http://spmensajeria.com/admin/aplication/modules/uploads/default.png" data-src="http://spmensajeria.com/admin/aplication/modules/uploads/default.png">'+
+                                    '<strong>'+data.consumo[i].descripcion+'</strong><span class="bg-red-dark">'+data.consumo[i].estado+'</span>'+
+                                    '<em style="font-size:11px!important;">Lugar Salida:'+data.consumo[i].lugarS+' <br> Lugar Entrega: '+data.consumo[i].lugarL +''+
+                                    '<br>Valor dom</strong>: $'+data.consumo[i].Valor+'<br>Ganancia:</strong> $ '+data.consumo[i].ganacia +'</em> </a>');    
+       
+         } 
+       }) 
+    
+    </script>
+    <script>
+        $.get("http://spmensajeria.com/admin/consumo.php?opcion=3", function( data ) {
+            console.log( data ); 
+            $('#not').html('<a>');
+            var i;
+            for (i = 0; i < 3; i++) {
+            {
+                $('#not').html(i);
+            }			
+          
+            } 
+          }) 
+    </script>
+<script>
+
+   
+  $.get("http://spmensajeria.com/admin/consumo.php?opcion=6", function( data ) {
+     console.log( data ); 
+     var i;
+     for (i = 0; i < 3; i++) {
+         var image ="http://spmensajeria.com/admin/aplication/modules/uploads/"+data.consumo[i].imagen;
+         if(data.consumo[i].imagen=== "")
+         { 
+             image ="http://spmensajeria.com/admin/aplication/modules/uploads/default.png";
+         }
+         console.log(image);
+       $('#eventos').append( '<div class="item shadow-large round-element">'+
+                     '<img width="700" class="owl-lazy" src="'+image+'" data-src="'+image+'">'+
+                     '<div class="above-overlay cover-content-bottom">'+
+                     '<h4 class="center-text uppercase ultrabold color-white bottom-0">'+data.consumo[i].nombre+'</h4>'+
+                     '<p class="color-white bottom-0 center-text font-12 opacity-80"></p>'+
+                     '</div></div></div>');    
+   
+     } 
+   }) 
+
+</script>
+
+
+<script>
+
+x = sessionStorage.getItem("usuario");
+y = sessionStorage.getItem("pass");
+    $.get("http://spmensajeria.com/admin/datosusuario.php?user="+x+"&pass="+y+"", function( data ) {
+        console.log( data ); 
+if (data.consumo[0].estado =='0')
+{
+    es = "activo";
+}else{
+    es="inactivo";
+}
+           $('#estadoUsu').html( ''+es+'');    
+           $('#estadoRec').html( ''+data.consumo[0].valor+'<br>' + 'finaliza: '+ data.consumo[0].fechafin +''); 
+           $('#moto').html( ''+data.consumo[0].placa+'');  
+           
+		        sessionStorage.setItem("id", data.consumo[0].id);   
+         } )
+       
+    
+    </script>
+</body>
+

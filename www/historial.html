@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<title>Mensajeria App</title><link rel="stylesheet" type="text/css" href="styles/style.css">
+<link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+<link rel="stylesheet" type="text/css" href="styles/framework.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+</head>
+
+<body>
+
+  
+<div id="preloader" class="preloader-light" >
+        <h1 class="center-text color-black ultrabold uppercase bottom-0 fa-2x">Mensajería app </h1>
+        <div id="preload-spinner"></div>
+        <p>Cargando aplicación</p>
+        <img src="images/soluciones.png" style="margin:auto;"/>
+</div>
+
+<div id="page-transitions" class="page-build">
+    <div class="page-bg gradient-body-1"></div>
+
+    <div class="header shadow-large header-light header-logo-app">
+		<a  class="header-logo"></a>
+		<a data-menu="menu-1" data-menu-type="menu-sidebar-left-push" href="#" class="header-icon header-icon-1"><i class="fas fa-bars"></i></a>
+		<a data-menu="menu-bell" data-menu-type="menu-box-top" href="#" onclick="notificacionesdom()" class="header-icon header-icon-3"><i class="fas fa-bell" id="not" style=" color: red;"></i>  </a>
+    </div> 
+	<div id="menu-1" class="menu menu-sidebar-left menu-settings">
+        <div class="menu-bg gradient-body-1"></div>
+        <div class="menu-scroll">
+            <div class="menu-header">
+                <a class="menu-logo" href="index.html"></a>
+                <h1>Bienvenido</h1>
+                <p id="user">Usuario, </p>
+            </div>
+            <div class="menu-list icon-background-active">
+                <em class="menu-divider top-10">Opciones</em> 
+                <a class="menu-item active-menu" onClick="home()" ><i class="fa gradient-green-light fa-star"></i>Inicio</a>
+                <a class="menu-item"  onclick="historial()"><i class="fa gradient-magenta-light fa-home"></i>Historial</a>
+                <a class="menu-item"  onclick="historial()"><i class="fa gradient-sky-light fa-cog"></i>Emergencia<span></span></a>
+                <a class="menu-item"  onclick="historial()"><i class="fa gradient-mint-dark fa-hand-point-right"></i>Kilometraje<span></span></a>
+                <a data-submenu="submenu-1" class="menu-item"  onclick="historial()"><i class="fa gradient-magenta-light fa-image"></i>Recarga<span></span></a>
+                
+                <a class="menu-item"  onclick="historial()"><i class="fa gradient-brown-light fa-file"></i>Perfil</a>
+                <a class="menu-item" href="" onclick="destroys()"><i class="fa gradient-red-light fa-window-close"></i>Cerrar Sesión</a>
+
+            </div>
+            <em class="menu-copyright">Derechos reservados <span class="copyright-year"></span></em>
+        </div>
+	</div>
+
+	<div class="page-content header-clear-large">
+
+        <div class="content" id="historialDomicilios"></div>
+      
+    
+     
+    </div>
+    
+    <div class="menu menu-box-full shadow-large" id="menu-settings">
+     
+    </div>
+
+    <div id="menu-bell" data-menu-height="425" class="menu menu-box-top bg-white">
+      
+        <div class="menu-bar"><div></div></div>
+    </div>
+
+
+
+
+   
+</div>
+
+
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/plugins.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
+<script>
+    iduser =sessionStorage.getItem("id");
+	$.get("http://spmensajeria.com/admin/consultaUsuario.php?opcion=12&user="+iduser+"", function( data ) {
+	 console.log( data ); 
+	 $('#historialDomicilios').html('<a>');
+     var i;
+     for (i = 0; i < 10; i++) {
+          
+		 
+        $('#historialDomicilios').append( '<div  onclick="DomiciloPage('+data.consumo[i].id+')" class="content-box bg-white shadow-large">'+
+	   '<h4 class="top-25"><i class="fa fa-home font-14 top-5 color-'+ data.consumo[i].estado+' float-right">'+ data.consumo[i].estado+'</i>Descripción: '+data.consumo[i].descripcion+'</h4>'+
+	   '<p class="font-12 bottom-20">Comisión:$'+ data.consumo[i].ganacia+'<br> Recibe: '+data.consumo[i].lugarS+' Destino: '+data.consumo[i].lugarS+' <br> fecha de domicilio: '+data.consumo[i].fecha+''+
+	  '</p></div>');    
+     
+     } 
+   }) 
+</script>
+</body>
